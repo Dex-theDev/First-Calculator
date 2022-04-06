@@ -24,6 +24,7 @@ const calculator = {
                 break;
             case 'C':
                 //clear screen and stored values
+                this.clearScreen()
                 break;
             case '.':
                 if(this.displayText === 0){
@@ -59,6 +60,12 @@ const calculator = {
         document.querySelector('.body-display').innerHTML = text
     },
     calcAnswer(equation){
-
+        let result = Function('return ' + equation)()
+        this.outputText(result)
+    },
+    clearScreen(){
+        this.displayText = '0',
+        this.prevTotal = null,
+        this.outputText(this.displayText)
     }
 }
